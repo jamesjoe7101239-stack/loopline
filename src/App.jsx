@@ -225,23 +225,4 @@ function TopBar({ me, view, setView, onLogout, setProfileTarget }) {
       <div style={styles.topBarLogo} onClick={() => setView("feed")}>loopline</div>
       <div style={styles.topBarIcons}>
         <button style={iconBtnStyle(view === "feed")} onClick={() => setView("feed")}><Home size={20} /></button>
-        <button style={iconBtnStyle(view === "search")} onClick={() => setView("search")}><Search size={20} /></button>
-        <button style={iconBtnStyle(view === "profile")} onClick={() => { setProfileTarget(me.uid); setView("profile"); }}><User size={20} /></button>
-        <button style={iconBtnStyle(false)} onClick={onLogout} title="Log out"><LogOut size={20} /></button>
-      </div>
-    </div>
-  );
-}
-
-function iconBtnStyle(active) {
-  return { background: active ? "rgba(255,107,91,0.15)" : "transparent", border: "none", color: active ? "#FF6B5B" : "#EDE7DA", padding: "8px 10px", borderRadius: 10, cursor: "pointer", display: "flex", alignItems: "center" };
-}
-
-function FeedView({ posts, users, me, onCreate, onLike, onComment, onOpenProfile, isFiltered }) {
-  return (
-    <div style={styles.feedCol}>
-      <Composer onCreate={onCreate} />
-      {!isFiltered && <div style={styles.hintBanner}>You're not following anyone yet — showing everyone's posts. Visit Search to follow people.</div>}
-      {posts.length === 0 && <div style={styles.emptyState}>No posts yet. Be the first to share something.</div>}
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} author={users[post.authorUid]}
+        <button style={iconBtnStyle(view === "search")} onClick={(
